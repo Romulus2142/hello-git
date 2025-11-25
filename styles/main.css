@@ -1,0 +1,30 @@
+.principal-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: "Albert Sans", sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 14rem;
+    letter-spacing: -0.05em;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.bg-color {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.yellow-text {
+    color: yellow;
+}
