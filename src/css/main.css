@@ -13,6 +13,30 @@
 }
 
 /* ============================================
+   ANIMACIONES KEYFRAMES
+   ============================================ */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -48%);
+    }
+}
+
+/* ============================================
    RESET Y ESTILOS BASE
    ============================================ */
 
@@ -30,10 +54,9 @@ html {
 }
 
 /* ============================================
-   LAYOUT PRINCIPAL
+   LAYOUT PRINCIPAL - FONDO
    ============================================ */
 
-/* Fondo con patrón de puntos */
 .bg-color {
     position: fixed;
     top: 0;
@@ -48,10 +71,9 @@ html {
 }
 
 /* ============================================
-   SECCIÓN PRINCIPAL DE CONTENIDO
+   SECCIÓN PRINCIPAL - CONTENIDO HEROICO
    ============================================ */
 
-/* Contenedor de texto principal */
 .principal-text {
     position: absolute;
     top: 40%;
@@ -61,10 +83,6 @@ html {
     text-align: center;
     z-index: 10;
     pointer-events: none;
-}
-
-/* Título "flow creative" */
-.principal-text {
     color: var(--color-white);
     font-family: var(--font-sans);
     font-style: italic;
@@ -73,7 +91,6 @@ html {
     letter-spacing: -0.05em;
 }
 
-/* Subtítulo */
 .principal-text .subtitle-text {
     font-family: var(--font-serif);
     font-size: 1.4rem;
@@ -83,16 +100,15 @@ html {
     margin-top: -30px;
 }
 
-/* Texto con color de acento */
 .yellow-text {
     color: var(--color-yellow);
 }
 
 /* ============================================
-   COMPONENTES UI
+   COMPONENTES UI - BOTONES Y ELEMENTOS
    ============================================ */
 
-/* Botón en la esquina superior derecha */
+/* Botón Menú - Esquina Superior Derecha */
 .top-right-btn {
     position: fixed;
     top: 12px;
@@ -117,7 +133,30 @@ html {
     transform: translateY(0);
 }
 
-/* Texto en la parte inferior centrado */
+/* Ícono - Esquina Superior Izquierda */
+.top-left-icon {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.top-left-icon img {
+    width: 30px;
+    height:30px;
+    object-fit: contain;
+    transition: transform 200ms ease;
+}
+
+.top-left-icon:hover img {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Texto Pie de Página */
 .bottom-text {
     position: fixed;
     bottom: 42px;
@@ -135,7 +174,7 @@ html {
    MENÚ FULLSCREEN
    ============================================ */
 
-/* Overlay del menú fullscreen */
+/* Overlay de fondo del menú */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -158,7 +197,7 @@ html {
     justify-content: center;
 }
 
-/* Contenido del menú en filas */
+/* Contenedor de secciones del menú */
 .menu-content {
     display: flex;
     flex-direction: column;
@@ -170,7 +209,7 @@ html {
     padding: 60px 20px;
 }
 
-/* Cada sección del menú */
+/* Sección individual del menú */
 .menu-section {
     width: 100%;
     text-align: center;
@@ -187,6 +226,7 @@ html {
     letter-spacing: 2px;
 }
 
+/* Lista de elementos del menú */
 .menu-section ul {
     list-style: none;
     padding: 0;
@@ -201,6 +241,7 @@ html {
     margin: 0;
 }
 
+/* Enlaces del menú */
 .menu-section a {
     color: var(--color-white);
     font-family: var(--font-serif);
@@ -211,6 +252,7 @@ html {
     display: inline-block;
 }
 
+/* Efecto subrayado en enlaces del menú */
 .menu-section a::after {
     content: '';
     position: absolute;
@@ -231,7 +273,7 @@ html {
     width: 100%;
 }
 
-/* Botón cerrar menú */
+/* Botón Cerrar Menú */
 .menu-close {
     position: fixed;
     top: 20px;
@@ -249,96 +291,154 @@ html {
     transform: rotate(90deg);
 }
 
-/* Animación de entrada */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* ============================================
    MEDIA QUERIES - DISEÑO RESPONSIVO
    ============================================ */
 
-/* Dispositivos móviles (hasta 768px) */
+/* ===== MOBILE (hasta 768px) ===== */
 @media (max-width: 768px) {
+    /* Título Principal */
     .principal-text {
-        top: 35%;
-        font-size: 4rem;
+        top: 38%;
+        font-size: 3.2rem;
+        animation: titleFloat 3s ease-in-out infinite;
     }
 
+    /* Subtítulo */
     .principal-text .subtitle-text {
-        font-size: 0.9rem;
-        margin-top: -15px;
-        padding: 0 20px;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-top: -12px;
+        padding: 0 15px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
     }
 
+    /* Botón Menú */
     .top-right-btn {
-        top: 10px;
-        right: 10px;
-        padding: 6px 10px;
-        font-size: 0.9rem;
+        top: 12px;
+        right: 12px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .top-right-btn:active {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Ícono Instagram */
+    .top-left-icon {
+        top: 12px;
+        left: 12px;
+        width: 30px;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 300ms ease;
+    }
+
+    .top-left-icon:active {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(0.95);
+    }
+
+    .top-left-icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Texto Inferior */
     .bottom-text {
-        bottom: 12px;
-        font-size: 0.5rem;
+        bottom: 16px;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+        opacity: 0.8;
     }
 
-    /* Menú responsive - mobile */
+    /* Menú Fullscreen */
     .menu-content {
-        gap: 50px;
-        padding: 80px 20px;
+        gap: 60px;
+        padding: 100px 20px;
+    }
+
+    .menu-section {
+        animation: slideUp 500ms ease-out;
+    }
+
+    .menu-section:nth-child(1) {
+        animation-delay: 50ms;
+    }
+
+    .menu-section:nth-child(2) {
+        animation-delay: 100ms;
+    }
+
+    .menu-section:nth-child(3) {
+        animation-delay: 150ms;
     }
 
     .menu-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+        font-weight: 800;
     }
 
     .menu-section ul {
         flex-direction: column;
-        gap: 15px;
+        gap: 18px;
     }
 
     .menu-section a {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        font-weight: 500;
     }
 
     .menu-close {
-        top: 15px;
-        right: 15px;
+        top: 16px;
+        right: 16px;
         font-size: 2.5rem;
+        opacity: 0.8;
+    }
+
+    .menu-close:active {
+        transform: rotate(90deg) scale(0.9);
     }
 }
 
-/* Tablets (769px - 1024px) */
+/* ===== TABLET (769px - 1024px) ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
+    /* Título Principal */
     .principal-text {
         top: 38%;
         font-size: 8rem;
     }
 
+    /* Subtítulo */
     .principal-text .subtitle-text {
         font-size: 1.1rem;
         margin-top: -25px;
     }
 
+    /* Botón Menú */
     .top-right-btn {
         font-size: 1rem;
         padding: 7px 12px;
     }
 
+    /* Texto Inferior */
     .bottom-text {
         font-size: 0.55rem;
     }
 
-    /* Menú responsive - tablet */
+    /* Menú Fullscreen */
     .menu-content {
         gap: 70px;
         padding: 60px 20px;
@@ -354,35 +454,42 @@ html {
     }
 }
 
-/* Desktop (1025px - 1919px) */
+/* ===== DESKTOP (1025px - 1919px) ===== */
 @media (min-width: 1025px) and (max-width: 1919px) {
+    /* Título Principal */
     .principal-text {
         font-size: 14rem;
     }
 
+    /* Subtítulo */
     .principal-text .subtitle-text {
         font-size: 1.4rem;
     }
 
+    /* Botón Menú */
     .top-right-btn {
         font-size: 1.2rem;
     }
 
+    /* Texto Inferior */
     .bottom-text {
         font-size: 0.6rem;
     }
 }
 
-/* Pantallas muy grandes - 4K (1920px+) */
+/* ===== 4K (1920px+) ===== */
 @media (min-width: 1920px) {
+    /* Título Principal */
     .principal-text {
         font-size: 18rem;
     }
 
+    /* Subtítulo */
     .principal-text .subtitle-text {
         font-size: 1.8rem;
     }
 
+    /* Botón Menú */
     .top-right-btn {
         top: 20px;
         right: 20px;
@@ -390,6 +497,7 @@ html {
         font-size: 1.4rem;
     }
 
+    /* Texto Inferior */
     .bottom-text {
         bottom: 20px;
         font-size: 0.8rem;
