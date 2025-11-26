@@ -132,6 +132,136 @@ html {
 }
 
 /* ============================================
+   MENÚ FULLSCREEN
+   ============================================ */
+
+/* Overlay del menú fullscreen */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+}
+
+.menu-overlay.active {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del menú en filas */
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+/* Cada sección del menú */
+.menu-section {
+    width: 100%;
+    text-align: center;
+    animation: slideUp 400ms ease-out;
+}
+
+.menu-section h2 {
+    color: var(--color-yellow);
+    font-family: var(--font-sans);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.menu-section li {
+    margin: 0;
+}
+
+.menu-section a {
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 200ms ease;
+    position: relative;
+    display: inline-block;
+}
+
+.menu-section a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-yellow);
+    transition: all 300ms ease;
+    transform: translateX(-50%);
+}
+
+.menu-section a:hover {
+    color: var(--color-yellow);
+}
+
+.menu-section a:hover::after {
+    width: 100%;
+}
+
+/* Botón cerrar menú */
+.menu-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--color-white);
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 101;
+    transition: transform 200ms ease;
+}
+
+.menu-close:hover {
+    transform: rotate(90deg);
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
    MEDIA QUERIES - DISEÑO RESPONSIVO
    ============================================ */
 
@@ -159,6 +289,32 @@ html {
         bottom: 12px;
         font-size: 0.5rem;
     }
+
+    /* Menú responsive - mobile */
+    .menu-content {
+        gap: 50px;
+        padding: 80px 20px;
+    }
+
+    .menu-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .menu-section ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu-section a {
+        font-size: 1rem;
+    }
+
+    .menu-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2.5rem;
+    }
 }
 
 /* Tablets (769px - 1024px) */
@@ -180,6 +336,21 @@ html {
 
     .bottom-text {
         font-size: 0.55rem;
+    }
+
+    /* Menú responsive - tablet */
+    .menu-content {
+        gap: 70px;
+        padding: 60px 20px;
+    }
+
+    .menu-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .menu-section a {
+        font-size: 1.1rem;
     }
 }
 
