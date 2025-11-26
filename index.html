@@ -39,15 +39,8 @@
             z-index: -100;
         }
 
-        @keyframes slideLeft {
-            from {
-                transform: translateX(100vw);
-            }
 
-            to {
-                transform: translateX(-100vw);
-            }
-        }
+
 
         .banner-slide {
             position: fixed;
@@ -70,16 +63,23 @@
 
     <!-- AÑADE LOS ATRIBUTOS autoplay Y muted -->
     <video class="video-background" autoplay loop muted playsinline>
-        <source src="video/bg_vid3.mp4" type="video/mp4">
+        <source src="video/bg_vid.mp4" type="video/mp4">
         Tu navegador no soporta el video.
     </video>
     <div class="bg-color"></div>
+    <!-- Botón en esquina superior derecha -->
+    <button class="top-right-btn" aria-label="Contacto">+ MENU</button>
     <!-- Resto del contenido -->
     <div class="principal-text">
-        <span class="yellow-text">f</span>low <span class="yellow-text">c</span>reative
-        <div class="subtitle-text">Soy <span class="yellow-text">Julio Guadarrama</span>, diseñador digital creativo 
+        <span id="flow-text"><span class="yellow-text">f</span>low <span class="yellow-text">c</span>reative</span>
+        <div class="subtitle-text">Soy <span class="yellow-text">Julio Guadarrama</span>, diseñador digital creativo
             especializado en fusionar la estética <br>visual con un desarrollo web funcional.</div>
     </div>
+
+    <!-- GreenSock CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
 
 </body>
 

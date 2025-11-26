@@ -12,7 +12,7 @@
     text-align: center;
     z-index: 10;
     pointer-events: none;
-    white-space: nowrap;
+    width: 100%;
 }
 
 .principal-text .subtitle-text {
@@ -30,11 +30,41 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: black;
-    opacity: 0.2;
+    background-color: #000;
+    /* Patrón de puntos sutil sobre fondo negro (ajustado: más visibles) */
+        background-image: radial-gradient(rgba(189, 189, 189, 0.12) 1px, transparent 1px);
+        /* Más densos: puntos más pegados */
+        background-size: 4px 4px;
+    opacity: 0.4;
     z-index: 1;
 }
 
 .yellow-text {
     color: yellow;
+}
+
+/* Estilo del botón en la esquina superior derecha */
+.top-right-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 60;
+    background: transparent;
+    color: #fff;
+    padding: 8px 14px;
+    font-family: "Noto Serif Display", serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: transform 120ms ease;
+}
+
+.top-right-btn:hover {
+    /* Sin borde: solo ligera elevación al pasar */
+    transform: translateY(-2px);
+}
+
+.top-right-btn:active {
+    transform: translateY(0);
 }
